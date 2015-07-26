@@ -1,9 +1,7 @@
-executable = main		
+OBJ = ChessMain.o ChessBoard.o ChessPiece.o Pawn.o Rook.o King.o Queen.o Bishop.o Knight.o
+executable = chess
 GCC = g++
-UTILS = ../../Utils
-CFLAGS = -Wall -g -MMD 
-OBJ = main.o $(UTILS)/sorting.o
-
+CFLAGS = -Wall -g -MMD
 
 $(executable): $(OBJ)
 	$(GCC) $(CFLAGS) $(OBJ) -o $(executable)
@@ -11,9 +9,7 @@ $(executable): $(OBJ)
 %.o: %.cpp
 	$(GCC) $(CFLAGS) -c $<
 
-
 -include $(OBJ:.o=.d)
-
 
 .PHONY: clean
 

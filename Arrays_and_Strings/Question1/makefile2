@@ -1,0 +1,30 @@
+#### makefile ####
+
+## -- Macros -- ## 
+COMPILER = gcc
+UTILS = ../../Utils
+FLAGS = -g -Wall -I$(UTILS)
+OBJECTS = main.o $(UTILS)/sorting.o
+EXEC = main
+
+$(EXEC) : $(OBJECTS)
+	$(COMPILER) $(FLAGS) $(OBJECTS) -o $(EXEC)
+
+#-----dependencies ----#
+
+main.o : $(UTILS)/sorting.h
+sorting.o: $(UTILS)/sorting.h
+
+clean:
+    rm -f $(EXEC) *.
+
+
+
+#main: main.o sorting.o
+#	g++ -g main.o sorting.o -o main
+
+#main.o: main.cpp
+#	g++ -g -Wall -c main.cpp
+
+#sorting.o: sorting.cpp sorting.h
+#	g++ -g -Wall -c sorting.cpp
